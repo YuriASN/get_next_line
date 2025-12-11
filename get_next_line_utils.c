@@ -1,8 +1,10 @@
 #include "get_next_line.h"
 
-/* Check if buffer has newline. If it has it moves
-the byte after newline to buffer[0] and returns TRUE.
-if not it erases all bytes of buffer and return FALSE*/
+/** @brief
+ * Returns TRUE or FALSE if the string
+ * passed as a parameter has a new line.
+ * Already clear buffer data moving the data
+ * from after \\n to beggining of it (buffer[0]). */
 int	has_newline(char *buffer)
 {
 	int	i;
@@ -21,7 +23,9 @@ int	has_newline(char *buffer)
 	return (j >= 0);
 }
 
-//Count the size of string until \n or the end.
+/** @brief
+ * Returns length of string, up to end of it or first 
+ * new line found. */
 static int	part_str(char *str)
 {
 	int	i;
@@ -38,7 +42,16 @@ static int	part_str(char *str)
 	return (i);
 }
 
-//Returns a pointer to the result of concatenation of string and buffer.
+/** @brief
+ * Returns an allocated string from the concatenation of str
+ * and buffer, up to \\n of \0.
+ * @param str
+ * String that will be add to.
+ * @param buffer
+ * String that will be added from.
+ * @return
+ * Concatenation of both strings, up to first \\n is found or \0.
+ */
 char	*bufferjoin(char *str, char *buffer)
 {
 	int		j;

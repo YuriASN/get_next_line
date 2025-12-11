@@ -1,5 +1,13 @@
 #include "get_next_line_bonus.h"
 
+/** @brief
+ * Function reads from FD and returns a single line from it
+ * on each call.
+ * @param fd
+ * File descriptor that will be read from.
+ * @return
+ * Allocated string that was read from FD.
+ * Or NULL in case of error or file ended. */
 char	*get_next_line(int fd)
 {
 	static char		buffer[FOPEN_MAX][BUFFER_SIZE + 1];
