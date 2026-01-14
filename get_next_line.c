@@ -22,9 +22,15 @@ char	*get_next_line(int fd)
 	{
 		if (!buffer[0])
 			i = read(fd, buffer, BUFFER_SIZE);
+		if (i == -1)
+		{
+			if (str)
+				free(str);
+			return (NULL);
+		}
 		if (i > 0)
 			str = bufferjoin(str, buffer);
-		if (has_newline(buffer))
+		if (!str || has_newline(buffer))
 			break ;
 	}
 	return (str);

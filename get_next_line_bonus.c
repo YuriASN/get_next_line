@@ -20,11 +20,17 @@ char	*get_next_line(int fd)
 	str = NULL;
 	while (i > 0)
 	{
-		if (!buffer[fd][0])
-			i = read(fd, buffer[fd], BUFFER_SIZE);
+		if (!buffer[0])
+			i = read(fd, buffer, BUFFER_SIZE);
+		if (i == -1)
+		{
+			if (str)
+				free(str);
+			return (NULL);
+		}
 		if (i > 0)
-			str = bufferjoin(str, buffer[fd]);
-		if (has_newline(buffer[fd]))
+			str = bufferjoin(str, buffer);
+		if (!str || has_newline(buffer))
 			break ;
 	}
 	return (str);
