@@ -4,7 +4,7 @@
 This is a project of a function that will read from a file descriptor a single line (up to new line or end of file), each time it's called and return it in a allocated string.  
 
 ## Instructions
-The program that uses the function will need a macro named BUFFER_SIZE, to set the size max that read() will use on it's buffer.  
+The program that uses the function will need a macro named BUFFER_SIZE, to set the size max that read() will use on it's buffer. If no macro is created, the function will use the value of 1.  
 It receives a parameter that's the File Descriptor to be read from, and return:  
 	1. The first line, if it's the first call.  
 	2. Next line from previous read.  
